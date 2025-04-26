@@ -1,8 +1,9 @@
-require('dotenv').config();
+import dotenv from 'dotenv'
+dotenv.config()
 
-const express = require('express');
-const mongoose = require('mongoose');
-const tarefaModel = require('./models/tarefa');
+import express from 'express'
+import mongoose from 'mongoose'
+import tarefaModel from './models/tarefas.js'
 const app = express();
 
 app.use(express.json());
@@ -25,4 +26,4 @@ app.get('/api/getAll', async (req, res) => {
 
 app.listen(3000, () => console.log('Server ready on port 3000.'));
 
-module.exports = app;
+export default app

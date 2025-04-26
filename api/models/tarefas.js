@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose'
 
 const tarefaSchema = new mongoose.Schema({
     descricao: {
@@ -15,4 +15,4 @@ const tarefaSchema = new mongoose.Schema({
     }
 )
 
-module.exports = mongoose.model('Tarefa', tarefaSchema)
+export default mongoose.model('Tarefa', tarefaSchema)
