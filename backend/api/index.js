@@ -1,20 +1,18 @@
 import dotenv from 'dotenv'
 dotenv.config()
-
+import cors from 'cors'
 import express from 'express'
 import mongoose from 'mongoose'
 import tarefaModel from './models/tarefas.js'
+
 const app = express();
 
-app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader('Access-Control-Allow-Methods', 'HEAD, GET, POST, PATCH, DELETE');
-    res.header(
-        "Access-Control-Allow-Headers",
-        "Origin, X-Requested-With, Content-Type, Accept"
-    );
-    next();
-});
+app.use(cors({
+    origin: 'https://apitarefasaline240285frontend.vercel.app',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Origin', 'X-Requested-With', 'Accept', 'Authorization'],
+    credentials: true
+}))
 
 app.use(express.json());
 
