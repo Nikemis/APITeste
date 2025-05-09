@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Tarefa } from "./tarefa";
 import { HttpClient } from '@angular/common/http';
 
@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
   standalone: false,
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'TODOapp';
 
   arrayDeTarefas: Tarefa[] = [];
@@ -17,12 +17,10 @@ export class AppComponent {
 
   constructor(private http: HttpClient) {
     this.apiURL = "https://apitarefasaline240285-aline-akemi-nishidas-projects.vercel.app";
-    console.log(`${this.apiURL}/api/getAll`);
-    this.http.get<Tarefa[]>(`${this.apiURL}/api/getAll`).subscribe(resultado => {
-      console.log(resultado);
+  }
 
-      this.arrayDeTarefas = resultado
-    });
+  ngOnInit(): void {
+    this.READ_tarefas();
   }
 
   CREATE_tarefa(descricaoNovaTarefa: string) {
@@ -33,11 +31,7 @@ export class AppComponent {
 
   READ_tarefas() {
     this.http.get<Tarefa[]>(`${this.apiURL}/api/getAll`).subscribe(
-      resultado => {
-        console.log(resultado);
-
-        this.arrayDeTarefas = resultado
-      });
+      resultado => { console.log(resultado); this.arrayDeTarefas = resultado });
   }
 
   DELETE_tarefa(tarefaAserRemovida: Tarefa) {
