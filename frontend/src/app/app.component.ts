@@ -16,7 +16,7 @@ export class AppComponent {
   apiURL: string;
 
   constructor(private http: HttpClient) {
-    this.apiURL = "https://apitarefasaline240285-aline-akemi-nishidas-projects.vercel.app"
+    this.apiURL = "https://apitarefasaline240285-aline-akemi-nishidas-projects.vercel.app";
     this.READ_tarefas();
   }
 
@@ -30,7 +30,9 @@ export class AppComponent {
     this.http.get<Tarefa[]>(`${this.apiURL}/api/getAll`).subscribe(
       resultado => this.arrayDeTarefas = resultado);
 
+    console.log(this.arrayDeTarefas);
   }
+
   DELETE_tarefa(tarefaAserRemovida: Tarefa) {
     var indice = this.arrayDeTarefas.indexOf(tarefaAserRemovida);
     var id = this.arrayDeTarefas[indice]._id;
@@ -45,6 +47,4 @@ export class AppComponent {
       tarefaAserModificada).subscribe(
         resultado => { console.log(resultado); this.READ_tarefas(); });
   }
-
-
 }
