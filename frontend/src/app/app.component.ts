@@ -17,7 +17,12 @@ export class AppComponent {
 
   constructor(private http: HttpClient) {
     this.apiURL = "https://apitarefasaline240285-aline-akemi-nishidas-projects.vercel.app";
-    this.READ_tarefas();
+    console.log(`${this.apiURL}/api/getAll`);
+    this.http.get<Tarefa[]>(`${this.apiURL}/api/getAll`).subscribe(resultado => {
+      console.log(resultado);
+
+      this.arrayDeTarefas = resultado
+    });
   }
 
   CREATE_tarefa(descricaoNovaTarefa: string) {
