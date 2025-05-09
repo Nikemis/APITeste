@@ -28,9 +28,11 @@ export class AppComponent {
 
   READ_tarefas() {
     this.http.get<Tarefa[]>(`${this.apiURL}/api/getAll`).subscribe(
-      resultado => this.arrayDeTarefas = resultado);
+      resultado => {
+        console.log(resultado);
 
-    console.log(this.arrayDeTarefas);
+        this.arrayDeTarefas = resultado
+      });
   }
 
   DELETE_tarefa(tarefaAserRemovida: Tarefa) {
