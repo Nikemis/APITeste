@@ -12,11 +12,12 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent implements OnInit {
   title = 'TODOapp';
 
-  arrayDeTarefas: Tarefa[] = [];
+  arrayDeTarefas: Tarefa[];
   apiURL: string;
 
   constructor(private http: HttpClient) {
     this.apiURL = "https://apitarefasaline240285-aline-akemi-nishidas-projects.vercel.app";
+    this.arrayDeTarefas = [];
   }
 
   ngOnInit(): void {
