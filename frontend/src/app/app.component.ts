@@ -30,7 +30,9 @@ export class AppComponent implements OnInit {
   }
 
   READ_tarefas() {
-    this.http.get<Tarefa[]>(`${this.apiURL}/api/getAll`).subscribe(
+    this.http.get<Tarefa[]>(`${this.apiURL}/api/getAll`, {
+      transferCache: false,
+    }).subscribe(
       resultado => { console.log(resultado); this.arrayDeTarefas = resultado });
   }
 
