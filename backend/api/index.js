@@ -8,7 +8,7 @@ import tarefaModel from './models/tarefas.js'
 const app = express();
 
 app.use(cors({
-    origin: 'https://apitarefasaline240285frontend.vercel.app',
+    origin: 'https://neon-tiramisu-01b2b8.netlify.app',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Origin', 'X-Requested-With', 'Accept', 'Authorization'],
     credentials: true
